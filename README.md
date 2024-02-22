@@ -1,6 +1,6 @@
 # gym_presence
 
-A new Flutter project.
+A new Flutter project with Firebase, GetX, and HTTP.
 
 ## Getting Started
 
