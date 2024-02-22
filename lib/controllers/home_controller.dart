@@ -2,34 +2,25 @@ import 'package:get/get.dart';
 
 class HomeController extends GetxController {
   RxInt dataInt = 0.obs;
-  RxString dataString = "data".obs;
-  RxBool dataBool = true.obs;
-  RxList<int> dataList = [1, 2, 3].obs;
-  RxMap<String, dynamic> dataMap = <String, dynamic>{
-    "id": 1,
-    "name": "Depri",
-    "age": 22,
-  }.obs;
 
-  void changeName() {
-    dataMap["name"] = "Rian";
-    dataMap["age"] = "23";
+  void change() => dataInt++;
+
+  @override
+  void onInit() {
+    ever(dataInt, (callback) => print("Changed"));
+    once(dataInt, (callback) => print("Calls 1x in starting state"));
+    debounce(
+      dataInt,
+      (callback) => print("Calls in 3 seconds"),
+      time: const Duration(
+        seconds: 3,
+      ),
+    );
+    interval(
+      dataInt,
+      (callback) => print("Calls in every 2 seconds"),
+      time: Duration(seconds: 2),
+    );
+    super.onInit();
   }
-
-  int nextNum = 4;
-  void addNumber() {
-    dataList.add(nextNum);
-    nextNum++;
-  }
-
-  void switchBool() {
-    // dataBool.value != dataBool.value;
-    dataBool.toggle(); // cara simple
-  }
-
-  void updateString() => dataString.value = "data (updated)";
-  void resetString() => dataString.value = "data";
-
-  void incrementInt() => dataInt++;
-  void decrementInt() => dataInt--;
 }
