@@ -17,9 +17,18 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Obx(
-              () => Text(
-                "${homeC.dataObs}",
+            // realtime changing.
+            // Obx(
+            //   () => Text(
+            //     "${homeC.dataObs}",
+            //     style: TextStyle(fontSize: 50),
+            //   ),
+            // ),
+
+            // simple SM, make a trigger to change state.
+            GetBuilder<HomeController>(
+              builder: (controller) => Text(
+                "${controller.dataObs}",
                 style: TextStyle(fontSize: 50),
               ),
             ),
@@ -29,6 +38,14 @@ class HomeScreen extends StatelessWidget {
                 homeC.addData();
               },
               child: Text("ADD DATA"),
+            ),
+            SizedBox(height: 10),
+            // button for trigger state changed.
+            ElevatedButton(
+              onPressed: () {
+                homeC.refreshData();
+              },
+              child: Text("REFRESH"),
             ),
           ],
         ),
