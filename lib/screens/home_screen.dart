@@ -31,8 +31,8 @@ class HomeScreen extends StatelessWidget {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  Get.to(() => ProfileScreen()); // cara simple Navigator.push()
-                  // Get.off(ProfileScreen()); // getx versi .pushReplacement()
+                  // Get.to(() => ProfileScreen());
+                  Get.toNamed("/profile"); // pake getPages di main.dart
                 },
                 child: Text("Next >>"),
               ),

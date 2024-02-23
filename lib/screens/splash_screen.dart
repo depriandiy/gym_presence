@@ -34,12 +34,8 @@ class SplashScreen extends StatelessWidget {
       next: const Icon(Icons.arrow_forward),
       done: const Text("Done"),
       onDone: () {
-        // Navigator.of(context).pushReplacement(
-        //   MaterialPageRoute(
-        //     builder: (context) => HomeScreen(),
-        //   ),
-        // );
-        Get.off(() => HomeScreen()); // simple way pushReplacement()
+        // Get.off(() => HomeScreen());
+        Get.offNamed("/home");
       },
     );
   }

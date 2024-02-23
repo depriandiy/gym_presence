@@ -32,9 +32,8 @@ class ProfileScreen extends StatelessWidget {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  // Get.back(); // sama kayak Navigator.pop()
-                  Get.offAll(() =>
-                      SplashScreen()); // langsung ke SplashScreen, mengabaikan Stack.
+                  // Get.offAll(() => SplashScreen());
+                  Get.offAllNamed("/intro");
                 },
                 child: Text("Logout"),
               ),

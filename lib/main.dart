@@ -28,6 +28,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Gym Presence',
       home: HomeScreen(),
+      getPages: [
+        GetPage(name: "/intro", page: () => SplashScreen()),
+        GetPage(name: "/home", page: () => HomeScreen()),
+        GetPage(name: "/profile", page: () => ProfileScreen()),
+      ],
     );
   }
 }
