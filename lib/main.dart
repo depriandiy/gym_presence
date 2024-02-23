@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:gym_presence/controllers/home_controller.dart';
 import 'firebase_options.dart';
 import 'package:get/get.dart';
-import 'package:gym_presence/screens/splash_screen.dart';
 import 'package:gym_presence/screens/home_screen.dart';
 
 void main() async {
@@ -11,11 +11,14 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+  // final homeC = Get.put(HomeController()); // proses Get.put dilakukan di awal state.
+  final homeC = Get.lazyPut(() =>
+      HomeController()); // akan memproses Get.put ketika ada screen yg membutuhkan.
 
   @override
   Widget build(BuildContext context) {

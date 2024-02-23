@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gym_presence/controllers/home_controller.dart';
-import 'package:gym_presence/screens/profile_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class ProfileScreen extends StatelessWidget {
   // final homeC = Get.put(HomeController());
   HomeController homeC = Get.find(); // karena Get.put sudah ada di main.dart
 
@@ -25,20 +24,8 @@ class HomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "${homeC.data['name']} - ${homeC.data['age']} Tahun.",
+                "${homeC.data2['name']} - ${homeC.data2['age']} Tahun.",
                 style: TextStyle(fontSize: 25),
-              ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ProfileScreen(),
-                    ),
-                  );
-                },
-                child: Text("Next >>"),
               ),
             ],
           ),
