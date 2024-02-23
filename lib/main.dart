@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:gym_presence/bindings/home_binding.dart';
 import 'package:gym_presence/controllers/home_controller.dart';
 import 'package:gym_presence/screens/profile_screen.dart';
 import 'package:gym_presence/screens/splash_screen.dart';
@@ -18,7 +19,6 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
-  // final homeC = Get.lazyPut(() => HomeController());
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,8 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: "/home",
           page: () => HomeScreen(),
-          binding: BindingsBuilder.put(() => HomeController()), // => line 21.
+          // binding: BindingsBuilder.put(() => HomeController()),
+          binding: HomeBinding(), // call a class binding
         ),
       ],
     );
