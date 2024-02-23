@@ -5,8 +5,7 @@ import 'package:gym_presence/screens/home_screen.dart';
 import 'package:gym_presence/screens/splash_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
-  // final homeC = Get.put(HomeController());
-  HomeController homeC = Get.find(); // karena Get.put sudah ada di main.dart
+  HomeController homeC = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +31,6 @@ class ProfileScreen extends StatelessWidget {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  // Get.offAll(() => SplashScreen());
                   Get.offAllNamed("/intro");
                 },
                 child: Text("Logout"),

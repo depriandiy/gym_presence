@@ -18,9 +18,7 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
-  // final homeC = Get.put(HomeController()); // proses Get.put dilakukan di awal state.
-  final homeC = Get.lazyPut(() =>
-      HomeController()); // akan memproses Get.put ketika ada screen yg membutuhkan.
+  // final homeC = Get.lazyPut(() => HomeController());
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +28,12 @@ class MyApp extends StatelessWidget {
       home: HomeScreen(),
       getPages: [
         GetPage(name: "/intro", page: () => SplashScreen()),
-        GetPage(name: "/home", page: () => HomeScreen()),
         GetPage(name: "/profile", page: () => ProfileScreen()),
+        GetPage(
+          name: "/home",
+          page: () => HomeScreen(),
+          binding: BindingsBuilder.put(() => HomeController()), // => line 21.
+        ),
       ],
     );
   }

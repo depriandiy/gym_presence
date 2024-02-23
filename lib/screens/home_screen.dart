@@ -4,9 +4,7 @@ import 'package:gym_presence/controllers/home_controller.dart';
 import 'package:gym_presence/screens/profile_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-  // final homeC = Get.put(HomeController());
-  HomeController homeC = Get.find(); // karena Get.put sudah ada di main.dart
-
+  HomeController homeC = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,8 +29,7 @@ class HomeScreen extends StatelessWidget {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  // Get.to(() => ProfileScreen());
-                  Get.toNamed("/profile"); // pake getPages di main.dart
+                  Get.toNamed("/profile");
                 },
                 child: Text("Next >>"),
               ),
