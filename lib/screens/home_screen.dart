@@ -31,12 +31,8 @@ class HomeScreen extends StatelessWidget {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ProfileScreen(),
-                    ),
-                  );
+                  Get.to(() => ProfileScreen()); // cara simple Navigator.push()
+                  // Get.off(ProfileScreen()); // getx versi .pushReplacement()
                 },
                 child: Text("Next >>"),
               ),

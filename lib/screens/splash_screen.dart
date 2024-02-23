@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:gym_presence/screens/home_screen.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
@@ -33,11 +34,12 @@ class SplashScreen extends StatelessWidget {
       next: const Icon(Icons.arrow_forward),
       done: const Text("Done"),
       onDone: () {
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(
-            builder: (context) => HomeScreen(),
-          ),
-        );
+        // Navigator.of(context).pushReplacement(
+        //   MaterialPageRoute(
+        //     builder: (context) => HomeScreen(),
+        //   ),
+        // );
+        Get.off(() => HomeScreen()); // simple way pushReplacement()
       },
     );
   }

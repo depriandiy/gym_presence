@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gym_presence/controllers/home_controller.dart';
+import 'package:gym_presence/screens/home_screen.dart';
+import 'package:gym_presence/screens/splash_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   // final homeC = Get.put(HomeController());
@@ -26,6 +28,15 @@ class ProfileScreen extends StatelessWidget {
               Text(
                 "${homeC.data2['name']} - ${homeC.data2['age']} Tahun.",
                 style: TextStyle(fontSize: 25),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  // Get.back(); // sama kayak Navigator.pop()
+                  Get.offAll(() =>
+                      SplashScreen()); // langsung ke SplashScreen, mengabaikan Stack.
+                },
+                child: Text("Logout"),
               ),
             ],
           ),
