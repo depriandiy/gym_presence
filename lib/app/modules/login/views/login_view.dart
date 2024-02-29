@@ -17,6 +17,7 @@ class LoginView extends GetView<LoginController> {
         padding: const EdgeInsets.all(30),
         children: [
           TextField(
+            autocorrect: false,
             controller: controller.emailC,
             decoration: const InputDecoration(
               labelText: "Username",
@@ -25,6 +26,7 @@ class LoginView extends GetView<LoginController> {
           ),
           const SizedBox(height: 10),
           TextField(
+            autocorrect: false,
             controller: controller.passC,
             decoration: const InputDecoration(
               labelText: "Password",

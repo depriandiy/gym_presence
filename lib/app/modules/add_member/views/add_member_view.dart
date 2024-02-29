@@ -19,6 +19,7 @@ class AddMemberView extends GetView<AddMemberController> {
         padding: const EdgeInsets.all(30),
         children: [
           TextField(
+            autocorrect: false,
             controller: controller.nameC,
             decoration: const InputDecoration(
               labelText: "Member name",
@@ -27,6 +28,7 @@ class AddMemberView extends GetView<AddMemberController> {
           ),
           const SizedBox(height: 10),
           TextField(
+            autocorrect: false,
             controller: controller.usernameC,
             decoration: const InputDecoration(
               labelText: "Username",
@@ -35,6 +37,7 @@ class AddMemberView extends GetView<AddMemberController> {
           ),
           const SizedBox(height: 10),
           TextField(
+            autocorrect: false,
             controller: controller.emailC,
             decoration: const InputDecoration(
               labelText: "Email",
@@ -43,6 +46,7 @@ class AddMemberView extends GetView<AddMemberController> {
           ),
           const SizedBox(height: 10),
           TextField(
+            autocorrect: false,
             controller: controller.ageC,
             decoration: const InputDecoration(
               labelText: "Age",

@@ -15,6 +15,19 @@ class LoginController extends GetxController {
           email: emailC.text,
           password: passC.text,
         );
+
+        print(loginCredential);
+        if (loginCredential.user != null) {
+          if (loginCredential.user!.emailVerified == true) {
+            Get.offAllNamed(Routes.HOME);
+          } else {
+            Get.defaultDialog(
+              title: "Account Verification",
+              middleText:
+                  "Can't login with this email, check your verification email to verify your account.",
+            );
+          }
+        }
       } on FirebaseAuthException catch (e) {
         if (e.code == 'user-not-found') {
           Get.snackbar("Error occured", "No user found for that username.");

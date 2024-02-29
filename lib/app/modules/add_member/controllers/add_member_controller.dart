@@ -35,6 +35,8 @@ class AddMemberController extends GetxController {
             "age": ageC.text,
             "createdAt": DateTime.now().toIso8601String(),
           });
+
+          await memberCredential.user!.sendEmailVerification();
         }
 
         print(memberCredential);
