@@ -20,7 +20,7 @@ class LoginView extends GetView<LoginController> {
             autocorrect: false,
             controller: controller.emailC,
             decoration: const InputDecoration(
-              labelText: "Username",
+              labelText: "Email",
               border: OutlineInputBorder(),
             ),
           ),
