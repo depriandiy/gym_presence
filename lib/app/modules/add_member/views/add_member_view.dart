@@ -22,6 +22,7 @@ class AddMemberView extends GetView<AddMemberController> {
             controller: controller.nameC,
             decoration: const InputDecoration(
               labelText: "Member name",
+              border: OutlineInputBorder(),
             ),
           ),
           const SizedBox(height: 10),
@@ -29,6 +30,7 @@ class AddMemberView extends GetView<AddMemberController> {
             controller: controller.usernameC,
             decoration: const InputDecoration(
               labelText: "Username",
+              border: OutlineInputBorder(),
             ),
           ),
           const SizedBox(height: 10),
@@ -36,6 +38,7 @@ class AddMemberView extends GetView<AddMemberController> {
             controller: controller.emailC,
             decoration: const InputDecoration(
               labelText: "Email",
+              border: OutlineInputBorder(),
             ),
           ),
           const SizedBox(height: 10),
@@ -43,6 +46,7 @@ class AddMemberView extends GetView<AddMemberController> {
             controller: controller.ageC,
             decoration: const InputDecoration(
               labelText: "Age",
+              border: OutlineInputBorder(),
             ),
             keyboardType: TextInputType.number,
           ),

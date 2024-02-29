@@ -27,7 +27,7 @@ class AddMemberController extends GetxController {
         if (memberCredential.user != null) {
           String uid = memberCredential.user!.uid;
 
-          firesstore.collection("member").doc(uid).set({
+          await firesstore.collection("member").doc(uid).set({
             "uid": uid,
             "name": nameC.text,
             "username": usernameC.text,
