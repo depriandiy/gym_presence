@@ -1,43 +1,62 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:gym_presence/app/modules/members/controllers/members_controller.dart';
 
 import '../controllers/add_member_controller.dart';
 
 class AddMemberView extends GetView<AddMemberController> {
   AddMemberView({super.key});
-  final memberC = Get.find<MembersController>();
+  final addMemberC = Get.find<AddMemberController>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('AddMemberView'),
+        title: const Text('Add Member'),
         centerTitle: true,
       ),
       body: ListView(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(30),
         children: [
           TextField(
             controller: controller.nameC,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: "Member name",
             ),
           ),
+          const SizedBox(height: 10),
+          TextField(
+            controller: controller.usernameC,
+            decoration: const InputDecoration(
+              labelText: "Username",
+            ),
+          ),
+          const SizedBox(height: 10),
+          TextField(
+            controller: controller.emailC,
+            decoration: const InputDecoration(
+              labelText: "Email",
+            ),
+          ),
+          const SizedBox(height: 10),
           TextField(
             controller: controller.ageC,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: "Age",
             ),
             keyboardType: TextInputType.number,
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           ElevatedButton(
             onPressed: () {
-              memberC.addMember(controller.nameC.text, controller.ageC.text);
+              addMemberC.addMember(
+                controller.nameC.text,
+                controller.usernameC.text,
+                controller.emailC.text,
+                controller.ageC.text,
+              );
             },
-            child: Text("ADD MEMBER"),
+            child: const Text("ADD MEMBER"),
           ),
         ],
       ),

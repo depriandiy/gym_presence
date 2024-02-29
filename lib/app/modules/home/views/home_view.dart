@@ -11,21 +11,21 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('HomeView'),
+        title: const Text('FOS Gym'),
         centerTitle: true,
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'HomeView is working',
               style: TextStyle(fontSize: 20),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () => Get.toNamed(Routes.MEMBERS),
-              child: Text("SEE MEMBERS"),
+              child: const Text("SEE MEMBERS"),
             ),
           ],
         ),

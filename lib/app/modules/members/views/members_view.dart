@@ -12,12 +12,12 @@ class MembersView extends GetView<MembersController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('MembersView'),
+        title: const Text('List Member'),
         centerTitle: true,
       ),
       body: Obx(
         () => ListView.builder(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           itemCount: controller.allMembers.length,
           itemBuilder: (context, index) =>
               MemberItem(controller.allMembers[index]),
@@ -27,7 +27,7 @@ class MembersView extends GetView<MembersController> {
         onPressed: () {
           Get.toNamed(Routes.ADD_MEMBER);
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.person_add),
       ),
     );
   }

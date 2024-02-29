@@ -12,7 +12,12 @@
           "package_name": "com.example.gym_presence"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "507546910010-0ugc8su0lj54a5jogv7dc6sp4b1pdg1d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyD0hTBLTb-VJ6cyzgDbQrJrnsZfFGI7YFg"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "507546910010-0ugc8su0lj54a5jogv7dc6sp4b1pdg1d.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "507546910010-2eis42qmca959vtqqu80k16vrmg5vbsh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.gymPresence"
+              }
+            }
+          ]
         }
       }
     }
