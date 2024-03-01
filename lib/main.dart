@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'app/routes/app_pages.dart';
@@ -9,12 +10,29 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   runApp(
-    GetMaterialApp(
-      title: "Gym Presence",
-      debugShowCheckedModeBanner: false,
-      initialRoute: Routes.LOGIN,
-      getPages: AppPages.routes,
+    StreamBuilder<User?>(
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const MaterialApp(
+            home: Scaffold(
+              body: Center(
+                child: CircularProgressIndicator(),
+              ),
+            ),
+          );
+        }
+        print(snapshot.data);
+
+        return GetMaterialApp(
+          title: "Gym Presence",
+          debugShowCheckedModeBanner: false,
+          initialRoute: snapshot.data != null ? Routes.HOME : Routes.LOGIN,
+          getPages: AppPages.routes,
+        );
+      },
     ),
   );
 }
