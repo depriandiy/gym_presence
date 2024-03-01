@@ -12,7 +12,7 @@ class MembersView extends GetView<MembersController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('List Member'),
+        title: const Text('FOS Member'),
         centerTitle: true,
       ),
       body: Obx(

@@ -21,17 +21,4 @@ class MembersController extends GetxController {
       "age": 25,
     },
   ].obs;
-
-  void addMember(String name, String username, String age) {
-    if (name.isNotEmpty && username.isNotEmpty && age.isNotEmpty) {
-      allMembers.add({
-        "name": name,
-        "username": username,
-        "age": int.parse(age),
-      });
-      Get.back();
-    } else {
-      Get.snackbar("Error occured", "All data should be filled!");
-    }
-  }
 }
