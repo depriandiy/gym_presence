@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -15,13 +16,30 @@ class MembersView extends GetView<MembersController> {
         title: const Text('FOS Member'),
         centerTitle: true,
       ),
-      body: Obx(
-        () => ListView.builder(
-          padding: const EdgeInsets.all(10),
-          itemCount: controller.allMembers.length,
-          itemBuilder: (context, index) =>
-              MemberItem(controller.allMembers[index]),
-        ),
+      body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+        stream: controller.streamAllMembers(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          if (snapshot.hasData) {
+            List<DocumentSnapshot<Map<String, dynamic>>> members =
+                snapshot.data!.docs;
+            return ListView.builder(
+              itemCount: members.length,
+              itemBuilder: (context, index) {
+                Map<String, dynamic>? memberData = members[index].data();
+                return MemberItem(memberData!);
+              },
+            );
+          } else {
+            return const Center(
+              child: Text("No data"),
+            );
+          }
+        },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

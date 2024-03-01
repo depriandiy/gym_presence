@@ -1,24 +1,19 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
 class MembersController extends GetxController {
-  RxList<Map<String, dynamic>> allMembers = <Map<String, dynamic>>[
-    {
-      "id": 1,
-      "name": "Depri Andiyanto",
-      "username": "depriandiy",
-      "age": 23,
-    },
-    {
-      "id": 2,
-      "name": "Samuel Halim",
-      "username": "samuelh",
-      "age": 24,
-    },
-    {
-      "id": 3,
-      "name": "Teofilus Tri Haryadi",
-      "username": "teofilusth",
-      "age": 25,
-    },
-  ].obs;
+  FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+  // Get current login member data, DocumentSnapshot<>
+  Stream<DocumentSnapshot<Map<String, dynamic>>> streamMember() async* {
+    String uid = auth.currentUser!.uid;
+    yield* firestore.collection("member").doc(uid).snapshots();
+  }
+
+  // Get all members data, QuerySnapshot<>
+  Stream<QuerySnapshot<Map<String, dynamic>>> streamAllMembers() {
+    return firestore.collection("member").snapshots();
+  }
 }
