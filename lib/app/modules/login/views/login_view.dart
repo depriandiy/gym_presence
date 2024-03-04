@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:gym_presence/app/routes/app_pages.dart';
 
 import '../controllers/login_controller.dart';
 
@@ -42,7 +43,7 @@ class LoginView extends GetView<LoginController> {
             child: const Text("LOGIN"),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () => Get.toNamed(Routes.FORGOT_PASSWORD),
             child: const Text("Forgot Password ?"),
           ),
         ],
