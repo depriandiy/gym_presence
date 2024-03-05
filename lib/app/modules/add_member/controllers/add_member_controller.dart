@@ -41,6 +41,7 @@ class AddMemberController extends GetxController {
             "username": usernameC.text,
             "email": emailC.text,
             "age": ageC.text,
+            "role": "member",
             "createdAt": DateTime.now().toIso8601String(),
           });
 
