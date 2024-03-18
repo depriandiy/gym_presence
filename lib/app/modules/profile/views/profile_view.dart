@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:gym_presence/app/routes/app_pages.dart';
 
 import '../controllers/profile_controller.dart';
 
@@ -58,18 +59,21 @@ class ProfileView extends GetView<ProfileController> {
                 ),
                 const SizedBox(height: 25),
                 ListTile(
-                  onTap: () {},
+                  onTap: () => Get.toNamed(
+                    Routes.UPDATE_PROFILE,
+                    arguments: user,
+                  ),
                   leading: const Icon(Icons.person_rounded),
-                  title: const Text("Edit Profile"),
+                  title: const Text("Update Profile"),
                 ),
                 ListTile(
-                  onTap: () {},
+                  onTap: () => Get.toNamed(Routes.UPDATE_PASSWORD),
                   leading: const Icon(Icons.key_rounded),
                   title: const Text("Update Password"),
                 ),
                 if (user['role'] == 'admin')
                   ListTile(
-                    onTap: () {},
+                    onTap: () => Get.toNamed(Routes.ADD_MEMBER),
                     leading: const Icon(Icons.person_add_rounded),
                     title: const Text("Add Member"),
                   ),
