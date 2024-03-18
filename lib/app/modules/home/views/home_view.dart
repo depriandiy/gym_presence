@@ -19,29 +19,33 @@ class HomeView extends GetView<HomeController> {
       body: StreamBuilder<DocumentSnapshot<Map<String, dynamic>>>(
         stream: controller.userRole(),
         builder: (context, snapshot) {
-          String role = snapshot.data!.data()!['role'];
-          if (role == "admin") {
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    onPressed: () => Get.toNamed(Routes.MEMBERS),
-                    child: const Text("SEE MEMBERS"),
-                  ),
-                  const SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: () => Get.toNamed(Routes.PROFILE),
-                    child: const Text("PROFILE"),
-                  ),
-                ],
-              ),
-            );
+          if (snapshot.hasData) {
+            String role = snapshot.data!.data()!['role'];
+            if (role == "admin") {
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () => Get.toNamed(Routes.MEMBERS),
+                      child: const Text("SEE MEMBERS"),
+                    ),
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: () => Get.toNamed(Routes.PROFILE),
+                      child: const Text("PROFILE"),
+                    ),
+                  ],
+                ),
+              );
+            } else {
+              return ElevatedButton(
+                onPressed: () => Get.toNamed(Routes.PROFILE),
+                child: const Text("PROFILE"),
+              );
+            }
           } else {
-            return ElevatedButton(
-              onPressed: () => Get.toNamed(Routes.PROFILE),
-              child: const Text("PROFILE"),
-            );
+            return const Center(child: CircularProgressIndicator());
           }
         },
       ),

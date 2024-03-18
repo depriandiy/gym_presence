@@ -14,6 +14,9 @@ class MembersController extends GetxController {
 
   // Get all members data, QuerySnapshot<>
   Stream<QuerySnapshot<Map<String, dynamic>>> streamAllMembers() {
-    return firestore.collection("member").snapshots();
+    return firestore
+        .collection("member")
+        .where("role", isEqualTo: "member")
+        .snapshots();
   }
 }
