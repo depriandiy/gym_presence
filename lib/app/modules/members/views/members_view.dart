@@ -28,6 +28,7 @@ class MembersView extends GetView<MembersController> {
             List<DocumentSnapshot<Map<String, dynamic>>> members =
                 snapshot.data!.docs;
             return ListView.builder(
+              padding: const EdgeInsets.all(20),
               itemCount: members.length,
               itemBuilder: (context, index) {
                 Map<String, dynamic>? memberData = members[index].data();
