@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -70,10 +73,39 @@ class UpdateProfileView extends GetView<UpdateProfileController> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              uProfile['profile'] != null && uProfile['profile'] != ""
-                  ? const Text("Photo profile")
-                  : const Text("No choosen file."),
-              TextButton(onPressed: () {}, child: const Text("Choose file"))
+              GetBuilder<UpdateProfileController>(
+                builder: (c) {
+                  if (c.imgP != null) {
+                    return SizedBox(
+                      height: 100,
+                      width: 100,
+                      child: Image.file(
+                        File(c.imgP!.path),
+                        fit: BoxFit.cover,
+                      ),
+                    );
+                  } else {
+                    if (uProfile['profile'] != null) {
+                      return SizedBox(
+                        height: 100,
+                        width: 100,
+                        child: Image.network(
+                          uProfile['profile'],
+                          fit: BoxFit.cover,
+                        ),
+                      );
+                    } else {
+                      return const Text("No choosen file.");
+                    }
+                  }
+                },
+              ),
+              TextButton(
+                onPressed: () {
+                  controller.pickImage();
+                },
+                child: const Text("Choose file"),
+              )
             ],
           ),
           const SizedBox(height: 20),
