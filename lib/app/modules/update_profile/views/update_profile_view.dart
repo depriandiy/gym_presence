@@ -61,6 +61,21 @@ class UpdateProfileView extends GetView<UpdateProfileController> {
             ),
             keyboardType: TextInputType.number,
           ),
+          const SizedBox(height: 25),
+          const Text(
+            "Photo Profile",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              uProfile['profile'] != null && uProfile['profile'] != ""
+                  ? const Text("Photo profile")
+                  : const Text("No choosen file."),
+              TextButton(onPressed: () {}, child: const Text("Choose file"))
+            ],
+          ),
           const SizedBox(height: 20),
           ElevatedButton(
             onPressed: () {
