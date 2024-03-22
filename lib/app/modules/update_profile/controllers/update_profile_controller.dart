@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart' as s;
 
 class UpdateProfileController extends GetxController {
   TextEditingController nameC = TextEditingController();
@@ -12,6 +15,7 @@ class UpdateProfileController extends GetxController {
 
   FirebaseFirestore fStore = FirebaseFirestore.instance;
   FirebaseAuth auth = FirebaseAuth.instance;
+  s.FirebaseStorage storage = s.FirebaseStorage.instance; //sampe sini
   //
   final ImagePicker picker = ImagePicker();
   XFile? imgP;
@@ -31,10 +35,22 @@ class UpdateProfileController extends GetxController {
     String uid = auth.currentUser!.uid;
     if (nameC.text.isNotEmpty && ageC.text.isNotEmpty) {
       try {
-        await fStore.collection("member").doc(uid).update({
+        Map<String, dynamic> data = {
           "name": nameC.text,
           "age": ageC.text,
-        });
+        };
+        if (imgP != null) {
+          File pFile = File(imgP!.path);
+          String ext = imgP!.name.split('.').last;
+
+          await storage.ref('$uid/profile.$ext').putFile(pFile);
+          String uImg = await storage.ref('$uid/profile.$ext').getDownloadURL();
+
+          data.addAll({
+            "profile": uImg,
+          });
+        }
+        await fStore.collection("member").doc(uid).update(data);
         Get.snackbar("Success", "Update profile successfully!");
       } catch (e) {
         Get.snackbar("Error occured!", "Can't update the data profile.");
